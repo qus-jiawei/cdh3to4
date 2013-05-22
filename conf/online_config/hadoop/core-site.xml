@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/home/hadoop/hadoop_temp</value>
+    </property>
+
+    <property>
+        <name>fs.default.name</name>
+        <!-- <value>hdfs://mob616:50900</value> -->
+        <value>hdfs://platform30:50900</value>
+    </property>
+
+    <property>
+        <name>webinterface.private.actions</name>
+        <value>true</value>
+    </property>
+
+    <property>
+    	<name>hadoop.proxyuser.oozie.hosts</name>
+    	<value>*</value>
+    </property>
+    
+    <property>
+        <name>hadoop.proxyuser.oozie.groups</name>
+        <value>*</value>
+    </property>
+
+    <property>
+        <name>io.compression.codecs</name>
+        <value>org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,com.hadoop.compression.lzo.LzoCodec,com.hadoop.compression.lzo.LzopCodec</value>
+    </property>
+    
+    <property>
+        <name>io.compression.codec.lzo.class</name>
+        <value>com.hadoop.compression.lzo.LzoCodec</value>
+    </property>
+    
+    <property>
+        <name>fs.trash.interval</name>
+        <value>4320</value><!-- 3 day -->
+    </property>
+    
+    <property>
+        <name>dfs.hosts.exclude</name>
+        <value>conf/excludes</value>
+    </property>
+
+  <property>
+        <name>mapred.hosts.exclude</name>
+        <value>conf/excludes_mapred</value>
+  </property>
+</configuration>

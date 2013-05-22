@@ -1,0 +1,14 @@
+# hbase profile - uc.cn
+#
+
+#HBASE_PROFILE-CDH4.2.1
+########################################################################
+  export HBASE_HOME=$HOME/hbase
+  export HBASE_BIN=$HBASE_HOME/bin
+  export HBASE_CONF_DIR=$HBASE_HOME/conf
+
+  export PATH=$HBASE_BIN:$PATH
+
+  alias cchb='cd $HBASE_HOME'
+  alias cchbf='cd $HBASE_CONF_DIR'
+  

@@ -1,0 +1,9 @@
+# HBase profile
+
+export HBASE_HOME=$HOME/hbase
+export HBASE_BIN=$HBASE_HOME/bin
+export HBASE_CONF_DIR=$HBASE_HOME/conf
+
+export PATH=$HBASE_BIN:$PATH
+
+
