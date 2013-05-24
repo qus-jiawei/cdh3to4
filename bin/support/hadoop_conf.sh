@@ -63,6 +63,9 @@ xml_set $HDFS dfs.balance.bandwidthPerSec $[20*1024*1024]
 xml_set $HDFS dfs.namenode.shared.edits.dir qjournal://$quorum/mycluster;
 xml_set $HDFS dfs.journalnode.rpc-address 0.0.0.0:${PP}485
 xml_set $HDFS dfs.journalnode.http-address  0.0.0.0:${PP}480
+xml_set $HDFS dfs.hosts "${CDH4_CONF_DIR}/dfs.include"
+xml_set $HDFS dfs.hosts.exclude "${CDH4_CONF_DIR}/dfs.exclude"
+
 
 #这里不修改，上文已经修改
 #xml_set $HDFS_P dfs.datanode.data.dir file://$HOME/hadoop_data/dfs/data
@@ -91,8 +94,8 @@ xml_set $MAPRED mapreduce.shuffle.port ${PP}880
 xml_set $MAPRED mapreduce.client.submit.file.replication `[ ${#NN} -gt 9 ] && echo 6 || echo 2`
 
 # masters & slaves
-:>$HADOOP_CONF_DIR/slaves
+rm -rf $FIX_CONF_DIR/slaves
 for dn in $DATA_NODES; do
-  echo $dn >> $HADOOP_CONF_DIR/slaves;
+  echo $dn >> $FIX_CONF_DIR/slaves;
 done;
 

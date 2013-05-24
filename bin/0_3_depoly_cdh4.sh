@@ -41,8 +41,8 @@ send_tar(){
 }
 
 
-send_tar "$HADOOP_NODES" "$CDH4_DIR/$CDH4_HADOOP_JAR"  "~/$CDH4_HADOOP_JAR" "~/$CDH4_HADOOP_DIR"
-send_tar "$HBASE_NODES" "$CDH4_DIR/$CDH4_HBASE_JAR"  "~/$CDH4_HBASE_JAR" "~/$CDH4_HBASE_DIR"
+send_tar "$NODES" "$CDH4_DIR/$CDH4_HADOOP_JAR"  "~/$CDH4_HADOOP_JAR" "~/$CDH4_HADOOP_DIR"
+send_tar "$NODES" "$CDH4_DIR/$CDH4_HBASE_JAR"  "~/$CDH4_HBASE_JAR" "~/$CDH4_HBASE_DIR"
 send_tar "$HIVE_NODES" "$CDH4_DIR/$CDH4_HIVE_JAR"  "~/$CDH4_HIVE_JAR" "~/$CDH4_HIVE_DIR"
 send_tar "$ZK_NODES" "$CDH4_DIR/$CDH4_ZK_JAR"  "~/$CDH4_ZK_JAR" "~/$CDH4_ZK_DIR"
 
@@ -78,5 +78,5 @@ done
 #发送mysql包
 for node in $HIVE_NODES
 do
-myscp "$UP_DATA/mysql-connector-java-5.1.16-bin.jar" "$node:~/hive/lib/"
+myscp "$UP_DATA/mysql-connector-java-5.1.16-bin.jar" "$node:~/$CDH4_HIVE_DIR/lib/"
 done

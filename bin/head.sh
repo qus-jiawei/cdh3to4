@@ -28,7 +28,7 @@ UP_LOG=$UP_ROOT/log
 UP_BACKUP=$UP_ROOT/backup
 ########分发包的路径
 CDH4_DIR="$UP_DATA/cdh4.2.1"
-CDH4_CONF_DIR="~/hadoop/etc/hadoop"
+CDH4_CONF_DIR="$HOME/hadoop/etc/hadoop"
 CDH4_HADOOP_JAR="hadoop-2.0.0-cdh4.2.1.tar.gz" 
 CDH4_HBASE_JAR="hbase-0.94.2-cdh4.2.1.tar.gz"
 CDH4_HIVE_JAR="hive-0.10.0-cdh4.2.1.tar.gz"
@@ -44,7 +44,7 @@ CDH4_ZK_DIR=${CDH4_ZK_JAR%.tar.gz}
 #CDH3回滚目录 仅测试环境有用
 #CDH3_HADOOP_JAR目录需要用于upgrade的时候，复制旧版配置文件到新版的hadoop中
 CDH3_DIR="$UP_DATA/cdh3"
-CDH3_CONF_DIR="~/hadoop/conf"
+CDH3_CONF_DIR="$HOME/hadoop/conf"
 CDH3_HADOOP_JAR="hadoop-0.20.2-cdh3u4.tar.gz" 
 CDH3_HBASE_JAR="hbase-0.90.6-cdh3u4.tar.gz"
 CDH3_HIVE_JAR="hive-0.7.1-cdh3u4.tar.gz"

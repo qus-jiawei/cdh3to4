@@ -9,24 +9,60 @@ platform34
 "
 #以下部分不影响配置文件生成
 #仅影响包分发
-HADOOP_NODES=""
-NAME_NODES=""
-DATA_NODES=""
-QJOURNAL_NODES=""
-RM=""
-
-
-HBASE_NODES=""
-BACKUP_NODES=""
-RS_NODES=""
-
-#默认第1,2台
-HIVE_NODES=""
-#默认前5台
-ZK_NODES=""
+HADOOP_NODES="
+platform30
+platform31
+platform32
+platform33
+platform34
+"
+NAME_NODES="
+platform30
+platform31
+"
 
 STANDBY_NODE=platform31
 
+DATA_NODES="
+platform31
+platform32
+platform33
+platform34
+"
+QJOURNAL_NODES="
+platform32
+platform33
+platform34
+"
+RM="platform30"
+
+
+HBASE_NODES="
+platform30
+platform31
+platform33
+platform34
+"
+BACKUP_NODES="
+platform31
+"
+RS_NODES="
+platform33
+platform34
+"
+
+#默认第1,2台
+HIVE_NODES="
+platform30
+platform31
+platform32
+"
+#默认前5台
+ZK_NODES="
+platform33
+platform34
+platform32
+"
 SSH_PORT=9922
 
 PORT_PREFIX=57
@@ -45,9 +81,10 @@ HIVE_MYSQL_DATABASE="qiujw_hive_metastore"
 #HIVE_MYSQL_PASSWD="ucbigdata"
 #HIVE_MYSQL_DATABASE="hive"
 
+#name dir
+NAME_DIR=~/hadoop_data/dfs/name
 #一般都不需要改部分啊啊啊-----------
 
-NAME_DIR=~/hadoop_data/dfs/name
 BACKUP_TAR=name-backup-`date +%Y%m%d`.tar.gz
 UPGRADE_TAR=name-upgrade-`date +%Y%m%d`.tar.gz
 

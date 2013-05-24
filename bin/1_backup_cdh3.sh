@@ -4,9 +4,13 @@ UP_BIN=$(cd $(dirname $0);pwd)
 var_die UP_ROOT
 
 echo "close hbase hive zookeeper first".
-sh $UP_BIN/close_check.sh hbase
-sh $UP_BIN/close_check.sh zk
+sh $UP_BIN/start_close_check.sh hbase close
+sh $UP_BIN/start_close_check.sh zk close
 #sh $UP_BIN/close_check.sh hive
+
+echo "dump mysql ..."
+mysqldump -h"${HIVE_MYSQL_HOST}" -P"${HIVE_MYSQL_PORT}" -u"${HIVE_MYSQL_USER}" -p"${HIVE_MYSQL_PASSWD}" "${HIVE_MYSQL_DATABASE}" >> $UP_BACKUP/hive_mysql_dump_${TIME_VERSION}
+
 
 echo "enter safemode ..."
 hadoop dfsadmin -safemode enter > /dev/null 2>&1
@@ -19,7 +23,7 @@ sleep 3
 echo "stop cdh3 ..."
 stop-all.sh
 sleep 5
-sh $UP_BIN/close_check.sh hadoop
+sh $UP_BIN/start_close_check.sh dfs
 
 sleep 3
 echo "back up name dir to $UP_BACKUP/$BACKUP_TAR"

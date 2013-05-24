@@ -7,16 +7,16 @@ source ~/.bash_profile
 
 start-dfs.sh -upgrade
 
+sh $UP_BIN/start_close_check.sh dfs start
 
 #等待safemode结束 运行检查TODO
 wait_for_safemode
 
 sh $UP_BIN/hdfs_check.sh
 
-sh $UP_BIN/start_check.sh hadoop
 
 stop-dfs.sh 
-sh  $UP_BIN/close_check.sh hadoop
+sh  $UP_BIN/start_close_check.sh dfs close
 
 echo "report check"
 hdfs dfsadmin -report

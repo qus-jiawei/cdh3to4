@@ -43,7 +43,7 @@ do
 done
 
 
-sh $UP_BIN/config.sh cdh3
+sh $UP_BIN/config_cdh3.sh
 source ~/.bash_profile
 hadoop namenode -format
 echo "run source ~/.bash_profile"

@@ -16,6 +16,8 @@ build_cdh4(){
         mkdir -p ${UP_CONF_BUILD}/cdh4/hadoop/$node
         cp ${UP_CONF_TEMP}/cdh4ha/hadoop/* ${UP_CONF_BUILD}/cdh4/hadoop/$node/
         cp ${UP_CONF_TEMP}/cdh4ha/private/* ${UP_CONF_BUILD}/cdh4/hadoop/$node/
+#用hadoop_conf.sh修改配置
+        . $UP_BIN/support/hadoop_conf.sh  ${UP_CONF_BUILD}/cdh4/hadoop/$node/
         cp ${UP_CONF_PICK}/hadoop/$node/core-site.xml ${UP_CONF_BUILD}/cdh4/hadoop/$node/
         cp ${UP_CONF_PICK}/hadoop/$node/hdfs-site.xml ${UP_CONF_BUILD}/cdh4/hadoop/$node/
         cp ${UP_CONF_PICK}/hadoop/$node/mapred-site.xml ${UP_CONF_BUILD}/cdh4/hadoop/$node/
@@ -53,6 +55,8 @@ build_cdh4ha(){
     do
         mkdir -p ${UP_CONF_BUILD}/cdh4ha/hive/$node/
         cp ${UP_CONF_TEMP}/cdh4ha/hive/* ${UP_CONF_BUILD}/cdh4ha/hive/$node/
+#调用hive_conf.sh修改配置        
+        . $UP_BIN/support/hive_conf.sh "${UP_CONF_BUILD}/cdh4ha/hive/$node/"
     done
 
     build_zk_config 

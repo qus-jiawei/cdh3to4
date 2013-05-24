@@ -15,6 +15,6 @@ for node in $NODES
 do
 echo $node
  ssh -p $SSH_PORT $node rm -rf ~/.deployer_profile ~/hadoop ~/.hadoop_profile ~/hbase ~/.hbase_profile ~/hive ~/.hive_profile
- ssh -p $SSH_PORT $node rm -rf ~/hadoop_data
+ ssh -p $SSH_PORT $node rm -rf ~/hadoop_data ~/hadoop*cdh4* ~/hbase*cdh4* ~/hive*cdh4* ~/zookeeper*cdh4* ~/zookeeper_data  ~/zookeeper
 done
 

@@ -5,7 +5,7 @@ var_die UP_ROOT
 
 start_zk(){
   sh $UP_BIN/start-zk.sh
-  sh $UP_BIN/start_check.sh zk
+  sh $UP_BIN/start_close_check.sh zk start
 }
 
 function formatZK(){
@@ -31,13 +31,13 @@ function journlnode(){
     echo "init journalnode"
     start-journalnode.sh 
     echo "wait for journalnode start" 
-    sh $UP_BIN/start_check.sh jn
+    sh $UP_BIN/start_close_check.sh jn start
     initializeSharedEdits
     sleep 1
     echo "stop journalnode"
     stop-journalnode.sh
     sleep 1
-    sh $UP_BIN/close_check.sh jn
+    sh $UP_BIN/start_close_check.sh jn close
 }
 
 function rsync_namenode(){
@@ -61,7 +61,7 @@ sh $UP_BIN/config_cdh4ha.sh
 
 start_zk
 echo "give you 10 second to check zookeeper"
-sleep 1
+sleep 5
 
 journlnode
 
@@ -74,11 +74,12 @@ rsync_namenode
 
 echo "format zk"
 formatZK
+sleep 5
 
 echo "begin to start"
-
 start-dfs.sh
 #TODO check
+sh $UP_BIN/start_close_check.sh dfs start
 wait_for_safemode
 sh $UP_BIN/hdfs_check.sh
 

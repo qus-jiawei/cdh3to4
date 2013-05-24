@@ -41,15 +41,15 @@ send_tar(){
 }
 
 
-#send_tar "$HADOOP_NODES" "$CDH3_DIR/$CDH3_HADOOP_JAR"  "~/$CDH3_HADOOP_JAR" "~/$CDH3_HADOOP_DIR"
-#send_tar "$HBASE_NODES" "$CDH3_DIR/$CDH3_HBASE_JAR"  "~/$CDH3_HBASE_JAR" "~/$CDH3_HBASE_DIR"
-#send_tar "$HIVE_NODES" "$CDH3_DIR/$CDH3_HIVE_JAR"  "~/$CDH3_HIVE_JAR" "~/$CDH3_HIVE_DIR"
-#send_tar "$ZK_NODES" "$CDH3_DIR/$CDH3_ZK_JAR"  "~/$CDH3_ZK_JAR" "~/$CDH3_ZK_DIR"
+send_tar "$NODES" "$CDH3_DIR/$CDH3_HADOOP_JAR"  "~/$CDH3_HADOOP_JAR" "~/$CDH3_HADOOP_DIR"
+send_tar "$NODES" "$CDH3_DIR/$CDH3_HBASE_JAR"  "~/$CDH3_HBASE_JAR" "~/$CDH3_HBASE_DIR"
+send_tar "$HIVE_NODES" "$CDH3_DIR/$CDH3_HIVE_JAR"  "~/$CDH3_HIVE_JAR" "~/$CDH3_HIVE_DIR"
+send_tar "$ZK_NODES" "$CDH3_DIR/$CDH3_ZK_JAR"  "~/$CDH3_ZK_JAR" "~/$CDH3_ZK_DIR"
 for node in $NODES
 do
-#myscp "$UP_DATA/lzo/lib/hadoop-lzo-0.4.12.jar" "$node:~/$CDH3_HADOOP_DIR/lib"
-#myscp "$UP_DATA/lzo/lib/native/Linux-amd64-64/*" "$node:~/$CDH3_HADOOP_DIR/lib/native/Linux-amd64-64"
-myscp "$UP_DATA/mysql-connector-java-5.1.16-bin.jar" "$node:~/hive/lib/"
+myscp "$UP_DATA/lzo/lib/hadoop-lzo-0.4.12.jar" "$node:~/$CDH3_HADOOP_DIR/lib"
+myscp "$UP_DATA/lzo/lib/native/Linux-amd64-64/*" "$node:~/$CDH3_HADOOP_DIR/lib/native/Linux-amd64-64"
+myscp "$UP_DATA/mysql-connector-java-5.1.16-bin.jar" "$node:~/$CDH3_HIVE_DIR/lib/"
 done
 
 

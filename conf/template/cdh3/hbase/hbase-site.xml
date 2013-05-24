@@ -344,7 +344,7 @@
   -->
   <property>
     <name>hbase.zookeeper.quorum</name>
-    <value>platform30,platform31,platform32,platform33,platform34</value>
+    <value>platform32,platform33,platform34</value>
   </property>
 
   <property>

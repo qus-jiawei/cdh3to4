@@ -6,7 +6,7 @@ UP_BIN=$(cd $(dirname $0);pwd)
 var_die UP_ROOT
 
 i=1
-for node in $NODES
+for node in $ZK_NODES
 do
 echo $node
 ssh -p $SSH_PORT $node "mkdir -p ~/zookeeper_data/logs;echo '$i' > ~/zookeeper_data/myid"

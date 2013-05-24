@@ -22,22 +22,25 @@ do
     "
     scp -P $SSH_PORT $UP_CONF/cdh4_profile/hadoop_profile $node:~/.hadoop_profile
     scp -P $SSH_PORT $UP_CONF/cdh4_profile/hbase_profile $node:~/.hbase_profile
+#bug fix profile 文件所有机器都会分发
+    scp -P $SSH_PORT $UP_CONF/cdh4_profile/hive_profile $node:~/.hive_profile
+    scp -P $SSH_PORT $UP_CONF/cdh4_profile/zookeeper_profile $node:~/.zookeeper_profile
 done
 for node in $HIVE_NODES
 do
     ssh -p $SSH_PORT $node "
         ln -s ~/$CDH4_HIVE_DIR ~/hive;
     "
-    scp -P $SSH_PORT $UP_CONF/cdh4_profile/hive_profile $node:~/.hive_profile
 done
 for node in $ZK_NODES
 do
     ssh -p $SSH_PORT $node "
         ln -s ~/$CDH4_ZK_DIR ~/zookeeper;
     "
-    scp -P $SSH_PORT $UP_CONF/cdh4_profile/zookeeper_profile $node:~/.zookeeper_profile
+    
 done
 
+#分发cdh4的配置文件
 sh $UP_BIN/config_cdh4.sh
 
 #加入检查TODO...

@@ -4,7 +4,7 @@ UP_BIN=$(cd $(dirname $0);pwd)
 var_die UP_ROOT
 
 start-hbase.sh
-sh $UP_BIN/start_check.sh hbase
+sh $UP_BIN/start_close_check.sh hbase start
 sh $UP_BIN/hbase_check.sh
 
 
