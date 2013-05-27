@@ -1,61 +1,74 @@
 #!/bin/bash
 
+NN1="mob616"
+NN2="mob508"
+G1=`build_array kpi#NUM# 11 15;`
+G2=`build_array kpi#NUM# 16 19;`
+G3=`build_array kpi#NUM# 25 28;`
+G4=`build_array kpi#NUM# 39 44;`
+G5=`build_array kpi#NUM# 45 52;`
 NODES="
-platform30
-platform31
-platform32
-platform33
-platform34
+$NN1
+$NN2
+$G1
+$G2
+$G3
+$G4
+$G5
 "
+
 #默认第1,2台
 HIVE_NODES="
-platform30
-platform31
-platform32
+$NN1
 "
 #默认前5台
 ZK_NODES="
-platform33
-platform34
-platform32
+kpi16
+kpi25
+kpi26
+kpi27
+kpi28
 "
 #以下部分影响配置文件生成
 #不影响包分发
 #HA中的两个namenode
 NAME_NODES="
-platform30
-platform31
+$NN1
+$NN2
 "
 #另一个增加的namenode
-STANDBY_NODE=platform31
+STANDBY_NODE=$NN2
 
 #所有的datanode，写进配置文件中的slaves
 DATA_NODES="
-platform31
-platform32
-platform33
-platform34
+$G1
+$G2
+$G3
+$G4
+$G5
 "
 #写进配置文件中的dfs.namenode.shared.edits.dir
 #dfs.journalnode.edits.dir
 #需要创建${user.home}/hadoop_journal/edits
-QJOURNAL_NODES="
-platform32
-platform33
-platform34
-"
-#resource manager
-RM="platform30"
+QJOURNAL_NODES=$ZK_NODES
 
-START_HMASTER="platform30"
+#resource manager
+RM="$NN1"
+
+#start-up hbase
+START_HMASTER="kpi16"
 #备用的hmaster
 BACKUP_HMASTERS="
-platform31
+kpi25
+kpi26
 "
 #regionserver 写进hbase_conf中的regionservers
 RS_NODES="
-platform33
-platform34
+kpi16
+kpi25
+kpi26
+kpi27
+kpi28
 "
 
 
@@ -65,20 +78,15 @@ PORT_PREFIX=57
 
 #如果为空，将会尝试从hive-site.xml中获得,使用匹配方式获取，不保证一定获取正确
 #推荐手动指定
-HIVE_MYSQL_HOST="platform30"
+HIVE_MYSQL_HOST="xxxhost"
 HIVE_MYSQL_PORT="58306"
-HIVE_MYSQL_USER="hive"
-HIVE_MYSQL_PASSWD="hive"
-HIVE_MYSQL_DATABASE="qiujw_hive_metastore"
+HIVE_MYSQL_USER="xxxhive"
+HIVE_MYSQL_PASSWD="xxxhive"
+HIVE_MYSQL_DATABASE="xxxqiujw_hive_metastore"
 
-#HIVE_MYSQL_HOST="platform33"
-#HIVE_MYSQL_PORT="3306"
-#HIVE_MYSQL_USER="qiujw"
-#HIVE_MYSQL_PASSWD="ucbigdata"
-#HIVE_MYSQL_DATABASE="hive"
 
 #name dir用于打包成tar包备份，会将这个目录发送到HA的namenode上启动
-NAME_DIR=$HOME/hadoop_data/dfs/name
+NAME_DIR=$HOME/hadoop_temp/dfs/name
 
 
 #一般都不需要改部分啊啊啊-----------

@@ -55,18 +55,8 @@ CDH3_HBASE_DIR=${CDH3_HBASE_JAR%.tar.gz}
 CDH3_HIVE_DIR=${CDH3_HIVE_JAR%.tar.gz}
 CDH3_ZK_DIR=${CDH3_ZK_JAR%.tar.gz}
 
-
-
-
-
-mkdir -p $UP_LOG
-mkdir -p $UP_BACKUP
-mkdir -p $UP_CONF/pick
 TIME_VERSION=`date +%Y%m%d-%H-%M`
-echo "UP_ROOT = $UP_ROOT"
-cd $UP_ROOT
 
-. $UP_CONF/config.sh
 
 #以下是函数的预定义
 die() { [ $# -gt 0 ] && echo "$@"; if [ "X$OLD_DIR" != "X" ]; then cd $OLD_DIR; fi; exit -1; }
@@ -139,6 +129,32 @@ xml_format() {
  sed  -i '/-->/ d' $1
  sed  -i '/^\s*$/d' $1
 }
+
+#用户生成字符串序列数组，
+#输入字符串模板和起始数字，结束数字，字符串模板中的#NUM#会被替换为数字
+#$1 string template $2 begin $3 end
+build_array(){
+    string=$1
+    begin=$2
+    end=$3
+
+    i=$begin
+    while [ "$i" -le "$end" ];
+    do
+        temp=$string
+        echo "${temp/\#NUM\#/$i}"
+        i=`expr $i + 1`
+    done
+}
+#函数的预定义结束
+##################
+mkdir -p $UP_LOG
+mkdir -p $UP_BACKUP
+mkdir -p $UP_CONF/pick
+echo "UP_ROOT = $UP_ROOT"
+cd $UP_ROOT
+
+. $UP_CONF/config.sh
 
 #***********************include once*************
 HEAD_DEF="HEAD_DEF"

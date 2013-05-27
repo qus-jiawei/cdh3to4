@@ -45,26 +45,37 @@ send_tar "$NODES" "$CDH4_DIR/$CDH4_HADOOP_JAR"  "~/$CDH4_HADOOP_JAR" "~/$CDH4_HA
 send_tar "$NODES" "$CDH4_DIR/$CDH4_HBASE_JAR"  "~/$CDH4_HBASE_JAR" "~/$CDH4_HBASE_DIR"
 send_tar "$HIVE_NODES" "$CDH4_DIR/$CDH4_HIVE_JAR"  "~/$CDH4_HIVE_JAR" "~/$CDH4_HIVE_DIR"
 send_tar "$ZK_NODES" "$CDH4_DIR/$CDH4_ZK_JAR"  "~/$CDH4_ZK_JAR" "~/$CDH4_ZK_DIR"
+#创建需要的目录
+echo "创建目录"
 
-#发送SBIN 脚本
 for node in $NODES
 do
-echo "send $node hadoop sbin  file ... to ~/$CDH4_HADOOP_DIR/sbin"
-scp -P $SSH_PORT  $UP_CONF/cdh4_sbin/hadoop_sbin/* $node:~/$CDH4_HADOOP_DIR/sbin >> /dev/null
-done
-
-
-for node in $HIVE_NODES
-do
-echo "send $node hive config  file ... to ~/$CDH4_HIVE_DIR/bin"
-scp -P $SSH_PORT  $UP_CONF/cdh4_sbin/hive_sbin/* $node:~/$CDH4_HIVE_DIR/bin  >>/dev/null
+    ssh -p ${SSH_PORT} $node "mkdir -p ~/yarm_nm"
 done
 
 
 for node in $ZK_NODES
 do
-echo "send $node zoo file ... to ~/$CDH4_ZK_DIR/bin"
-scp -P $SSH_PORT  $UP_CONF/cdh4_sbin/zk_sbin/* $node:~/$CDH4_ZK_DIR/bin >>/dev/null
+    ssh -p ${SSH_PORT} $node "mkdir -p ~/$CDH4_ZK_DIR/data ~/$CDH4_ZK_DIR/datalogs"
+done
+
+#发送SBIN 脚本
+echo "send sbin"
+for node in $NODES
+do
+myscp "$UP_CONF/cdh4_sbin/hadoop_sbin/*" "$node:~/$CDH4_HADOOP_DIR/sbin"
+done
+
+
+for node in $HIVE_NODES
+do
+myscp "$UP_CONF/cdh4_sbin/hive_sbin/*" "$node:~/$CDH4_HIVE_DIR/bin"
+done
+
+
+for node in $ZK_NODES
+do
+myscp "$UP_CONF/cdh4_sbin/zk_sbin/*" "$node:~/$CDH4_ZK_DIR/bin"
 done
 
 #发送lzo包

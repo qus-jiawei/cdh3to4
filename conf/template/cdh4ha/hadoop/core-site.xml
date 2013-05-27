@@ -19,7 +19,7 @@
 
   <property>
     <name>fs.trash.interval</name>
-    <value>1440</value>
+    <value>4320</value>
   </property>
 
   <property>

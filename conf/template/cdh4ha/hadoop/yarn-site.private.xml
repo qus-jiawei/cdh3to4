@@ -4,7 +4,18 @@
     <!-- mem scheduler -->
     <property>
         <name>yarn.nodemanager.resource.memory-mb</name>
-        <value>10240</value>
+        <value>5120</value>
     </property>
+
+    <property>
+        <name>yarn.nodemanager.local-dirs</name>
+        <value>${user.home}/yarn_nm/local-dir</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.log-dirs</name>
+        <value>${user.home}/yarn_nm/log-dir</value>
+    </property>
+
 
 </configuration>

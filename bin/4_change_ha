@@ -84,6 +84,8 @@ wait_for_safemode
 sh $UP_BIN/hdfs_check.sh
 
 start-yarn.sh
+#sh $UP_BIN/start_close_check.sh yarn start
+sh mr-jobhistory-daemon.sh start historyserver
 #TODO check
 sh $UP_BIN/mr_check.sh
 

@@ -4,7 +4,9 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-
+  
+  <xi:include href="mapred-site.private.xml"/>
+  
   <property>
     <name>mapreduce.framework.name</name>
     <value>yarn</value>
@@ -22,17 +24,17 @@
  
   <property>
     <name>mapreduce.jobhistory.intermediate-done-dir</name>
-    <value>${user.home}/yarn_nm/jobhistory/intermediate-done-dir</value>
+    <value>/user/${user.name}/yarn_nm/jobhistory/intermediate-done-dir</value>
   </property>
  
   <property>
     <name>mapreduce.jobhistory.done-dir</name>
-    <value>${user.home}/yarn_nm/jobhistory/done</value>
+    <value>/user/${user.name}/yarn_nm/jobhistory/done</value>
   </property>
 
   <property>
     <name>mapred.child.java.opts</name>
-    <value>-Xmx400m</value>
+    <value>-XX:+UseConcMarkSweepGC</value>
   </property>
 
   <property>
@@ -42,7 +44,7 @@
 
   <property>
     <name>mapreduce.client.submit.file.replication</name>
-    <value>3</value>
+    <value>6</value>
   </property>
 
   <property>
@@ -54,5 +56,16 @@
     <name>mapreduce.reduce.speculative</name>
     <value>false</value>
   </property>
+
+  <property>
+    <name>mapreduce.job.reduce.slowstart.completedmaps</name>
+    <value>0.8</value>
+  </property>
+
+  <property>
+    <name>yarn.app.mapreduce.am.staging-dir</name>
+    <value>/user</value>
+  </property>
+
 
 </configuration>

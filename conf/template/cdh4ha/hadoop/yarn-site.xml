@@ -44,16 +44,6 @@
     </property> 
 
     <property>
-        <name>yarn.nodemanager.local-dirs</name>
-        <value>${user.home}/yarn_nm/local-dir</value>
-    </property>
-
-    <property>
-        <name>yarn.nodemanager.log-dirs</name>
-        <value>${user.home}/yarn_nm/log-dir</value>
-    </property>
-
-    <property>
         <description>hdfs path</description>
         <name>yarn.nodemanager.remote-app-log-dir</name>
         <value>/var/log/hadoop-yarn</value>
@@ -82,8 +72,7 @@
 
     <property>
         <name>yarn.resourcemanager.scheduler.class</name>
-        <!-- <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fifo.FifoScheduler</value> -->
-        <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
+        <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
     </property>
 
     <property>

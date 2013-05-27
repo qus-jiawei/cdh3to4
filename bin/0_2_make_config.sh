@@ -15,7 +15,6 @@ build_cdh4(){
         echo "build cdh4 for $node";
         mkdir -p ${UP_CONF_BUILD}/cdh4/hadoop/$node
         cp ${UP_CONF_TEMP}/cdh4ha/hadoop/* ${UP_CONF_BUILD}/cdh4/hadoop/$node/
-        cp ${UP_CONF_TEMP}/cdh4ha/private/* ${UP_CONF_BUILD}/cdh4/hadoop/$node/
 #用hadoop_conf.sh修改配置
         . $UP_BIN/support/hadoop_conf.sh  ${UP_CONF_BUILD}/cdh4/hadoop/$node/
         cp ${UP_CONF_PICK}/hadoop/$node/core-site.xml ${UP_CONF_BUILD}/cdh4/hadoop/$node/
@@ -29,27 +28,19 @@ build_cdh4ha(){
     do
         echo "build cdh4ha for $node";
         mkdir -p ${UP_CONF_BUILD}/cdh4ha/hadoop/$node
-        mkdir -p  ${UP_CONF_BUILD}/cdh4ha/hbase/$node/
+        mkdir -p ${UP_CONF_BUILD}/cdh4ha/hbase/$node/
         cp ${UP_CONF_TEMP}/cdh4ha/hadoop/* ${UP_CONF_BUILD}/cdh4ha/hadoop/$node/
-        cp ${UP_CONF_TEMP}/cdh4ha/private/* ${UP_CONF_BUILD}/cdh4ha/hadoop/$node/
 #调用hadoop_conf.sh修改配置
         . $UP_BIN/support/hadoop_conf.sh  ${UP_CONF_BUILD}/cdh4ha/hadoop/$node/
-#特殊配置替换
-#需要替换的配置均使用井号包括
-        DFS_DATA_DIR=`xml_get ${UP_CONF_PICK}/hadoop/$node/hdfs-site.xml "dfs.data.dir"`
-        echo "$node 's DSF_DATA_DIR is ${DFS_DATA_DIR}"
-        xml_set ${UP_CONF_BUILD}/cdh4ha/hadoop/$node/hdfs-site.private.xml "dfs.data.dir" $DFS_DATA_DIR
-        
-        DFS_NAME_DIR=`xml_get ${UP_CONF_PICK}/hadoop/$node/hdfs-site.xml "dfs.name.dir"`
-        echo "$node 's DFS_NAME_DIR is ${DFS_NAME_DIR}"
-        xml_set ${UP_CONF_BUILD}/cdh4ha/hadoop/$node/hdfs-site.xml "dfs.name.dir" $DFS_NAME_DIR
-        xml_set ${UP_CONF_BUILD}/cdh4ha/hadoop/$node/hdfs-site.xml "dfs.namenode.name.dir" $DFS_NAME_DIR
 
-        cp ${UP_CONF_TEMP}/cdh4ha/hbase/* ${UP_CONF_BUILD}/cdh4ha/hbase/$node/
+       cp ${UP_CONF_TEMP}/cdh4ha/hbase/* ${UP_CONF_BUILD}/cdh4ha/hbase/$node/
 #调用hbase_conf.sh修改配置
         . $UP_BIN/support/hbase_conf.sh "${UP_CONF_BUILD}/cdh4ha/hbase/$node/" 
 
     done
+#调用private_conf.sh修改private配置        
+    . $UP_BIN/support/private_conf.sh ${UP_CONF_BUILD}/cdh4ha/hadoop
+
 
     for node in $HIVE_NODES
     do
@@ -89,11 +80,13 @@ build_zk_config(){
 }
 
 #清空build目录
-rm -rf ${UP_CONF_BUILD}/*
+rm -rf ${UP_CONF_BUILD}
+mkdir -p ${UP_CONF_BUILD}
 
 
 #hadoop的cdh4HA版本结合，生成非HA版本的配置文件
-build_cdh4
+echo "注释掉CDH4的生成部分用于测试"
+#build_cdh4
 
 #生成cdh4ha配置
 #将旧版的特殊配置提出来作为private xml

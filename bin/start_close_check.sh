@@ -108,7 +108,7 @@ get_name_node(){
     fi;
 }
 get_hmaster_node(){
-    hostname;
+    echo $START_HMASTER;
     cat ${HBASE_CONF_DIR}/backup-masters 
 }
 get_region_node(){

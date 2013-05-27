@@ -32,5 +32,5 @@ xml_set $HBASE hbase.zookeeper.property.clientPort ${PP}181
 xml_set $HBASE hbase.rest.port ${PP}880
 
 echo "$RS_NODES" > $REGIONSERVERS;
-echo ${BACKUP_NODES} > $BACKUP_MASTERS;
+echo ${BACKUP_HMASTERS} > $BACKUP_MASTERS;
 

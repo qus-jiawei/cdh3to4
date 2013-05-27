@@ -3,9 +3,13 @@
 <configuration>
 
   <property>
+    <name>dfs.data.dir</name> 
+    <value>${user.home}/hadoop_data/dfs/data</value>
+  </property>
+
+  <property>
     <name>dfs.datanode.failed.volumes.tolerated</name> 
     <value>0</value>
     <final>true</final>
   </property>
-
 </configuration>
