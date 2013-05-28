@@ -12,6 +12,9 @@ CORE="$FIX_CONF_DIR/core-site.xml"
 HDFS="$FIX_CONF_DIR/hdfs-site.xml"
 PP=${PORT_PREFIX}
 
+xml_format $CORE
+xml_format $HDFS
+
 # core-site.xml
 quorum=""
 for s in $ZK_NODES; do
@@ -24,6 +27,11 @@ done
 xml_set $CORE hadoop.tmp.dir "\${user.home}/hadoop_temp"
 #quorum=`echo $ZK_NODES|sed "s/ /,/g"` #注意，前面的$ZK..变量不可以加引号"
 xml_set $CORE ha.zookeeper.quorum $quorum
+
+#dfs.ha.fencing.methods 和 dfs.ha.fencing.ssh.private-key-files 是从HDFS中搬迁过来的
+xml_set $CORE dfs.ha.fencing.methods "sshfence($USER:$SSH_PORT)"
+xml_set $CORE dfs.ha.fencing.ssh.private-key-files $HOME/.ssh/id_rsa
+
 
 # hdfs-site.xml
 i=1
@@ -49,9 +57,6 @@ for s in $QJOURNAL_NODES; do
     quorum="$quorum;$s:${PORT_PREFIX}485"
   fi
 done
-xml_set $HDFS dfs.ha.fencing.methods "sshfence($USER:$SSH_PORT)"
-xml_set $HDFS dfs.ha.fencing.ssh.private-key-files $HOME/.ssh/id_rsa
-#xml_set $HDFS dfs.namenode.name.dir file://$HOME/hadoop_name,file://$HOME/hadoop_nfs/name
 #xml_set $HDFS dfs.namenode.name.dir file://$HOME/hadoop_name
 xml_set $HDFS dfs.replication `[ ${#NN} -gt 9 ] && echo 3 || echo 2`
 xml_set $HDFS dfs.cluster.administrators $USER
@@ -74,6 +79,10 @@ xml_set $HDFS dfs.hosts.exclude "${CDH4_CONF_DIR}/dfs.exclude"
 YARN="$FIX_CONF_DIR/yarn-site.xml"
 YARN_P="$FIX_CONF_DIR/yarn-site.private.xml"
 MAPRED="$FIX_CONF_DIR/mapred-site.xml"
+
+xml_format $YARN
+xml_format $YARN_P
+xml_format $MAPRED
 
 xml_set $YARN yarn.resourcemanager.address $RM:${PP}040
 xml_set $YARN yarn.resourcemanager.scheduler.address $RM:${PP}030

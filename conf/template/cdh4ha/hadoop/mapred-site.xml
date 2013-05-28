@@ -3,7 +3,7 @@
 
 <!-- Put site-specific property overrides in this file. -->
 
-<configuration>
+<configuration xmlns:xi="http://www.w3.org/2001/XInclude">
   
   <xi:include href="mapred-site.private.xml"/>
   
@@ -38,6 +38,22 @@
   </property>
 
   <property>
+    <name>mapreduce.map.output.compress</name>
+    <value>true</value>
+    <description>Should the outputs of the maps be compressed before being
+                   sent across the network. Uses SequenceFile compression.
+    </description>
+  </property>
+
+  <property>
+    <name>mapreduce.map.output.compress.codec</name>
+    <value>com.hadoop.compression.lzo.LzoCodec</value>
+    <description>If the map outputs are compressed, how should they be 
+                 compressed?
+    </description>
+  </property>
+
+  <property>
     <name>mapreduce.shuffle.port</name>
     <value>50880</value>
   </property>
@@ -65,6 +81,27 @@
   <property>
     <name>yarn.app.mapreduce.am.staging-dir</name>
     <value>/user</value>
+  </property>
+
+  <property>
+    <name>yarn.app.mapreduce.am.resource.mb</name>
+    <value>1024</value>
+    <description>The amount of memory the MR AppMaster needs.</description>
+  </property>
+
+  <property>
+    <name>mapreduce.task.io.sort.factor</name>
+    <value>20</value>
+    <description>The number of streams to merge at once while sorting
+    files.  This determines the number of open file handles.</description>
+  </property>
+  
+  <property>
+    <name>mapreduce.task.io.sort.mb</name>
+    <value>200</value>
+    <description>The total amount of buffer memory to use while sorting 
+    files, in megabytes.  By default, gives each merge stream 1MB, which
+    should minimize seeks.</description>
   </property>
 
 

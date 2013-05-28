@@ -19,13 +19,13 @@ easy_build(){
     dirs=`build_array /home#NUM#/hadoop_data $3 $4`
     build_conf "$hosts" "dfs.data.dir" "$dirs" "hdfs-site.private.xml"
     
-    dirs=`build_array /home#NUM#/yarn_nm/local-dir $3 $4`
+    dirs=`build_array /home#NUM#/hadoop/yarn_nm/local-dir $3 $4`
     build_conf "$hosts" "yarn.nodemanager.local-dirs" "$dirs" "yarn-site.private.xml"
 
-    dirs=`build_array /home#NUM#/yarn_nm/log-dir $3 $4`
+    dirs=`build_array /home#NUM#/hadoop/yarn_nm/log-dir $3 $4`
     build_conf "$hosts" "yarn.nodemanager.log-dirs" "$dirs" "yarn-site.private.xml"
 
-    dirs=`build_array /home#NUM#/yarn_nm/log-dir $3 $4`
+    dirs=`build_array /home#NUM#/hadoop/mapred/local-dir $3 $4`
     build_conf "$hosts" "mapreduce.cluster.local.dir" "$dirs" "mapred-site.private.xml"
 
 }

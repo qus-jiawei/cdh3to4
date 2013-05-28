@@ -47,10 +47,10 @@ platform34
 #resource manager
 RM="platform30"
 
-START_HMASTER="platform30"
+START_HMASTER="platform31"
 #备用的hmaster
 BACKUP_HMASTERS="
-platform31
+platform32
 "
 #regionserver 写进hbase_conf中的regionservers
 RS_NODES="
@@ -78,7 +78,7 @@ HIVE_MYSQL_DATABASE="qiujw_hive_metastore"
 #HIVE_MYSQL_DATABASE="hive"
 
 #name dir用于打包成tar包备份，会将这个目录发送到HA的namenode上启动
-NAME_DIR=$HOME/hadoop_data/dfs/name
+NAME_DIR=$HOME/hadoop_temp/dfs/name
 
 
 #一般都不需要改部分啊啊啊-----------

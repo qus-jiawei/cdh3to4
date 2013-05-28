@@ -5,6 +5,9 @@ UP_BIN=$(cd $(dirname $0);pwd)
 
 var_die UP_ROOT
 
+xml_format 
+exit
+
 i=0
 for node in $NODES
 do

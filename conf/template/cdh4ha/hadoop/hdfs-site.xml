@@ -3,7 +3,13 @@
 <configuration xmlns:xi="http://www.w3.org/2001/XInclude">
   
   <xi:include href="hdfs-site.private.xml"/>
-  
+
+  <property>
+    <name>dfs.namenode.name.dir</name>
+    <value>${user.home}/hadoop_temp/dfs/name</value>
+    <final>true</final>
+  </property>
+
   <property>
     <name>dfs.nameservices</name>
     <value>mycluster</value>
@@ -96,24 +102,8 @@
   </property>
 
   <property>
-    <name>dfs.ha.fencing.methods</name>
-    <value>sshfence(ztest:9922)</value>
-  </property>
-
-  <property>
-    <name>dfs.ha.fencing.ssh.private-key-files</name>
-    <value>/home/ztest/.ssh/id_rsa</value>
-  </property>
-
-  <property>
     <name>dfs.ha.automatic-failover.enabled</name>
     <value>true</value>
-  </property>
-
-  <property>
-    <name>dfs.namenode.name.dir</name>
-    <value>file:///home/hadoop/hadoop_name/name,file:///home/hadoop/hadoop_nfs/name</value>
-    <final>true</final>
   </property>
 
   <property>

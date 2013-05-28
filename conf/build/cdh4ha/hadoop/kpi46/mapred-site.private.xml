@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<configuration xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <property>
+        <name>mapreduce.cluster.local.dir</name> 
+        <value>/home5/hadoop/mapred/local-dir,/home6/hadoop/mapred/local-dir,/home7/hadoop/mapred/local-dir,/home8/hadoop/mapred/local-dir,/home9/hadoop/mapred/local-dir,/home10/hadoop/mapred/local-dir,/home11/hadoop/mapred/local-dir,/home12/hadoop/mapred/local-dir,/home13/hadoop/mapred/local-dir,/home14/hadoop/mapred/local-dir,/home15/hadoop/mapred/local-dir,/home16/hadoop/mapred/local-dir,/home17/hadoop/mapred/local-dir,/home18/hadoop/mapred/local-dir,/home19/hadoop/mapred/local-dir,/home20/hadoop/mapred/local-dir,/home21/hadoop/mapred/local-dir,/home22/hadoop/mapred/local-dir,/home23/hadoop/mapred/local-dir</value>
+        <description>The local directory where MapReduce stores intermediate
+            data files.  May be a comma-separated list of
+            directories on different devices in order to spread disk i/o.
+            Directories that do not exist are ignored.
+        </description>
+    </property>
+
+</configuration>

@@ -4,7 +4,7 @@
 
   <property>
     <name>hadoop.tmp.dir</name>
-    <value>/home/ztest/hadoop_temp</value>
+    <value>${user.home}/hadoop_temp</value>
   </property>
 
   <property>
@@ -28,8 +28,9 @@
   </property>
   
   <property>
-    <name>hadoop.security.authentication</name>
-    <value>simple</value>
+    <name>io.native.lib.available</name>
+    <value>true</value>
+    <description>Should native hadoop libraries, if present, be used.</description>
   </property>
 
   <property>
@@ -51,5 +52,17 @@
     <name>io.compression.codec.lzo.class</name>
     <value>com.hadoop.compression.lzo.LzoCodec</value>
   </property>
+
+  <property>
+    <name>dfs.ha.fencing.methods</name>
+    <value>sshfence(ztest:9922)</value>
+  </property>
+
+  <property>
+    <name>dfs.ha.fencing.ssh.private-key-files</name>
+    <value>/home/ztest/.ssh/id_rsa</value>
+  </property>
+
+
 
 </configuration>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<allocations>
+  <pool name="default">
+    <maxRunningJobs>50</maxRunningJobs>
+    <weight>3.0</weight>
+  </pool>
+  
+  <pool name="pool_low">
+    <maxRunningJobs>20</maxRunningJobs>
+    <weight>1.0</weight>
+  </pool>
+
+  <pool name="pool_high">
+    <minMaps>10</minMaps>
+    <minReduces>5</minReduces>
+    <maxRunningJobs>30</maxRunningJobs>
+    <minSharePreemptionTimeout>120</minSharePreemptionTimeout>
+    <weight>5.0</weight>
+  </pool>
+
+  <user name="kpi">
+    <maxRunningJobs>100</maxRunningJobs>
+    <weight>3.0</weight>
+  </user>
+
+  <poolMaxJobsDefault>100</poolMaxJobsDefault>
+  <userMaxJobsDefault>100</userMaxJobsDefault>
+  <defaultMinSharePreemptionTimeout>600</defaultMinSharePreemptionTimeout>
+  <fairSharePreemptionTimeout>600</fairSharePreemptionTimeout>
+</allocations>

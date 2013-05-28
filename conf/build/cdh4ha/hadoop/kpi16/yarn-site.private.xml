@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<configuration xmlns:xi="http://www.w3.org/2001/XInclude">
+    <property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>4000</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.local-dirs</name>
+        <value>/home17/hadoop/yarn_nm/local-dir,/home18/hadoop/yarn_nm/local-dir,/home19/hadoop/yarn_nm/local-dir,/home20/hadoop/yarn_nm/local-dir,/home21/hadoop/yarn_nm/local-dir,/home22/hadoop/yarn_nm/local-dir,/home23/hadoop/yarn_nm/local-dir</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.log-dirs</name>
+        <value>/home17/hadoop/yarn_nm/log-dir,/home18/hadoop/yarn_nm/log-dir,/home19/hadoop/yarn_nm/log-dir,/home20/hadoop/yarn_nm/log-dir,/home21/hadoop/yarn_nm/log-dir,/home22/hadoop/yarn_nm/log-dir,/home23/hadoop/yarn_nm/log-dir</value>
+    </property>
+</configuration>

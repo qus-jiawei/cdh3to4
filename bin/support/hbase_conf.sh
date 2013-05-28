@@ -15,6 +15,8 @@ HBASE="$FIX_HBASE_CONF/hbase-site.xml";
 REGIONSERVERS="$FIX_HBASE_CONF/regionservers";
 BACKUP_MASTERS="$FIX_HBASE_CONF/masters";
 
+xml_format $HBASE
+
 PP="${PORT_PREFIX}";
 xml_set $HBASE hbase.tmp.dir $HOME/hbase_temp
 xml_set $HBASE hbase.master.port ${PP}600
@@ -32,5 +34,5 @@ xml_set $HBASE hbase.zookeeper.property.clientPort ${PP}181
 xml_set $HBASE hbase.rest.port ${PP}880
 
 echo "$RS_NODES" > $REGIONSERVERS;
-echo ${BACKUP_HMASTERS} > $BACKUP_MASTERS;
+echo "$BACKUP_HMASTERS" > $BACKUP_MASTERS;
 

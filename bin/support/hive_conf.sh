@@ -20,6 +20,7 @@ done
 FIX_HIVE_CONF="$1"
 
 HIVE="$FIX_HIVE_CONF/hive-site.xml";
+xml_format $HIVE
 
 PP="${PORT_PREFIX}";
 

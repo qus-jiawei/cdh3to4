@@ -54,7 +54,6 @@ function rsync_namenode(){
     ssh -p $SSH_PORT $STANDBY_NODE mkdir -p $NAME_PWD
     scp -P $SSH_PORT -r $NAME_DIR $STANDBY_NODE:$NAME_PWD
 }
-#TODO 增加配置文件的复制操作
 echo "copying cdh4ha config back"
 sh $UP_BIN/config_cdh4ha.sh
 

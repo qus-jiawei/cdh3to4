@@ -19,7 +19,7 @@ build_conf(){
     do
         value="$value$dir,"
     done
-    value=${value#,}
+    value=${value%,}
 
     for host in $hosts
     do
