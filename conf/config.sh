@@ -1,1 +1,0 @@
-/home/qiujw/cdh3to4/conf/config.sh_online
