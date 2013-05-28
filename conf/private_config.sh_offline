@@ -32,5 +32,4 @@ easy_build(){
 
 
 #platform 31-34 home 
-easy_build 31 34 9  15
 
