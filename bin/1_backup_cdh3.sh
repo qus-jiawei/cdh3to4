@@ -27,7 +27,7 @@ cd `dirname $NAME_DIR`
 tar -zcf $UP_BACKUP/$BACKUP_TAR name
 ls -l $UP_BACKUP
 
-if [ "$HIVE_MYSQL" == "false"];then
+if [ "$HIVE_MYSQL" == "false" ];then
     echo "skip backup mysql"
 else
     
