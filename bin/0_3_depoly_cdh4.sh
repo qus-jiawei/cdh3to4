@@ -21,6 +21,7 @@ send_tar(){
     for node in $1
     do
         scp_file_and_check $2 $node $3
+        parent=$(dirname $4)
         if [ "$FORCE_UNTAR" == "true" ];then
             ssh -p $SSH_PORT $node "
             rm -rf $4;
@@ -29,6 +30,7 @@ send_tar(){
             "
         else
             ssh -p $SSH_PORT $node "
+                cd $parent
                 if [ -d $4 ];then 
                     echo 'dir find and skip untar ...';
                 else
@@ -40,10 +42,12 @@ send_tar(){
     done
 }
 
+#分发jdk
+send_tar "$NODES" "$UP_DATA/jdk/$JDK_1_7_TAR"  "~/java/$JDK_1_7_TAR" "~/java/$JDK_1_7_DIR"
 
 send_tar "$NODES" "$CDH4_DIR/$CDH4_HADOOP_JAR"  "~/$CDH4_HADOOP_JAR" "~/$CDH4_HADOOP_DIR"
 send_tar "$NODES" "$CDH4_DIR/$CDH4_HBASE_JAR"  "~/$CDH4_HBASE_JAR" "~/$CDH4_HBASE_DIR"
-send_tar "$HIVE_NODES" "$CDH4_DIR/$CDH4_HIVE_JAR"  "~/$CDH4_HIVE_JAR" "~/$CDH4_HIVE_DIR"
+send_tar "$NODES" "$CDH4_DIR/$CDH4_HBASE_JAR"  "~/$CDH4_HBASE_JAR" "~/java/$CDH4_HBASE_DIR"
 send_tar "$ZK_NODES" "$CDH4_DIR/$CDH4_ZK_JAR"  "~/$CDH4_ZK_JAR" "~/$CDH4_ZK_DIR"
 #创建需要的目录
 echo "创建目录"

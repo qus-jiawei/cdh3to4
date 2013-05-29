@@ -9,7 +9,7 @@ echo "删除软连接"
 for node in $NODES
 do
 ssh -p $SSH_PORT $node "
-rm -rf  ~/hadoop ~/hbase ~/hive ~/zookeeper ~/.hadoop_profile ~/.hbase_profile ~/.hive_profile ~/.zookeeper_profile
+rm -rf  ~/hadoop ~/hbase ~/hive ~/zookeeper ~/.hadoop_profile ~/.hbase_profile ~/.hive_profile ~/.zookeeper_profile ~/java/jdk
 "
 done
 
@@ -19,6 +19,7 @@ do
     ssh -p $SSH_PORT $node "
         ln -s ~/$CDH4_HADOOP_DIR ~/hadoop;
         ln -s ~/$CDH4_HBASE_DIR ~/hbase;
+        ln -s ~/java/$JDK_1_7_DIR ~/java/jdk;
     "
     scp -P $SSH_PORT $UP_CONF/cdh4_profile/hadoop_profile $node:~/.hadoop_profile
     scp -P $SSH_PORT $UP_CONF/cdh4_profile/hbase_profile $node:~/.hbase_profile

@@ -33,12 +33,14 @@ CDH4_HADOOP_JAR="hadoop-2.0.0-cdh4.2.1.tar.gz"
 CDH4_HBASE_JAR="hbase-0.94.2-cdh4.2.1.tar.gz"
 CDH4_HIVE_JAR="hive-0.10.0-cdh4.2.1.tar.gz"
 CDH4_ZK_JAR="zookeeper-3.4.5-cdh4.2.1.tar.gz"
+JDK_1_7_TAR="jdk-7u21-linux-x64.gz"
 
 #获取解压后的目录名，如果不一致可修改
 CDH4_HADOOP_DIR=${CDH4_HADOOP_JAR%.tar.gz}
 CDH4_HBASE_DIR=${CDH4_HBASE_JAR%.tar.gz}
 CDH4_HIVE_DIR=${CDH4_HIVE_JAR%.tar.gz}
 CDH4_ZK_DIR=${CDH4_ZK_JAR%.tar.gz}
+JDK_1_7_DIR="jdk1.7.0_21"
 
 ##################
 #CDH3回滚目录 仅测试环境有用

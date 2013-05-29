@@ -2,9 +2,7 @@
 
 UP_BIN=$(cd $(dirname $0);pwd)
 UP_BIN=$(dirname "$UP_BIN")
-. $UP_BIN/head.sh
-
-var_die UP_ROOT
+UP_CONF=$UP_BIN/../conf
 
 echo "offline"
 rm $UP_CONF/config.sh -rf
