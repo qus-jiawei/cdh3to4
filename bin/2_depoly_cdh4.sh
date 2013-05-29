@@ -19,7 +19,8 @@ do
     ssh -p $SSH_PORT $node "
         ln -s ~/$CDH4_HADOOP_DIR ~/hadoop;
         ln -s ~/$CDH4_HBASE_DIR ~/hbase;
-        ln -s ~/java/$JDK_1_7_DIR ~/java/jdk;
+        cd ~/java;
+        ln -s $JDK_1_7_DIR jdk;
     "
     scp -P $SSH_PORT $UP_CONF/cdh4_profile/hadoop_profile $node:~/.hadoop_profile
     scp -P $SSH_PORT $UP_CONF/cdh4_profile/hbase_profile $node:~/.hbase_profile
