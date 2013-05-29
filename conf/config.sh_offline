@@ -69,7 +69,7 @@ HIVE_MYSQL_HOST="platform30"
 HIVE_MYSQL_PORT="58306"
 HIVE_MYSQL_USER="hive"
 HIVE_MYSQL_PASSWD="hive"
-HIVE_MYSQL_DATABASE="qiujw_hive_metastore"
+HIVE_MYSQL_DATABASE="zhaigy1_hive_metastore"
 
 #HIVE_MYSQL_HOST="platform33"
 #HIVE_MYSQL_PORT="3306"

@@ -91,3 +91,12 @@ for node in $HIVE_NODES
 do
 myscp "$UP_DATA/mysql-connector-java-5.1.16-bin.jar" "$node:~/$CDH4_HIVE_DIR/lib/"
 done
+
+#发送native包
+for node in $NODES
+do
+myscp "$UP_DATA/cdh4native/*" "$node:~/$CDH4_HADOOP_DIR/lib/native/"
+
+done
+
+

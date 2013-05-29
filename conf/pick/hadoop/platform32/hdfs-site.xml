@@ -12,12 +12,12 @@
 
     <property>
         <name>dfs.data.dir</name>
-        <value>${user.home}/hadoop_data/dfs/data</value>
+        <value>${user.home}/hadoop_data</value>
     </property>
     
     <property>
         <name>dfs.name.dir</name>
-        <value>${user.home}/hadoop_data/dfs/name</value>
+        <value>${user.home}/hadoop_temp/dfs/name</value>
     </property>
  
 

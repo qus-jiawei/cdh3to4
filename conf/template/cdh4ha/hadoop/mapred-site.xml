@@ -34,7 +34,7 @@
 
   <property>
     <name>mapred.child.java.opts</name>
-    <value>-XX:+UseConcMarkSweepGC</value>
+    <value> -Xmx512m -XX:+UseConcMarkSweepGC</value>
   </property>
 
   <property>

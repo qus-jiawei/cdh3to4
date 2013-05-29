@@ -4,7 +4,7 @@
 
   <property>
     <name>dfs.data.dir</name> 
-    <value>${user.home}/hadoop_data/dfs/data</value>
+    <value>${user.home}/hadoop_data/</value>
   </property>
 
   <property>

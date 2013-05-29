@@ -13,7 +13,7 @@ FIX_HBASE_CONF="$1"
 
 HBASE="$FIX_HBASE_CONF/hbase-site.xml";
 REGIONSERVERS="$FIX_HBASE_CONF/regionservers";
-BACKUP_MASTERS="$FIX_HBASE_CONF/masters";
+BACKUP_MASTERS="$FIX_HBASE_CONF/backup-masters";
 
 xml_format $HBASE
 

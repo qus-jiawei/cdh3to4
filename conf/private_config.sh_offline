@@ -16,20 +16,19 @@
 easy_build(){
 
     hosts=`build_array platform#NUM# $1 $2`
-    dirs=`build_array $HOME/hadoop_data 1 1`
-    build_conf "$hosts" "dfs.data.dir" "$dirs" "hdfs-site.private.xml"
+    build_conf "$hosts" "yarn.nodemanager.resource.memory-mb" "4000" "yarn-site.private.xml"
     
-    dirs=`build_array /home#NUM#/yarn_nm/local-dir 1 1`
-    build_conf "$hosts" "yarn.nodemanager.local-dirs" "$dirs" "yarn-site.private.xml"
+    build_conf "$hosts" "yarn.scheduler.minimum-allocation-mb" "512" "yarn-site.xml"
+    build_conf "$hosts" "yarn.scheduler.maximum-allocation-mb" "1024" "yarn-site.xml"
 
-    dirs=`build_array /home#NUM#/yarn_nm/log-dir 1 1`
-    build_conf "$hosts" "yarn.nodemanager.log-dirs" "$dirs" "yarn-site.private.xml"
+    build_conf "$hosts" "mapreduce.task.io.sort.mb" "200" "mapred-site.xml"
 
-    dirs=`build_array /home#NUM#/mapred/local-dir 1 1`
-    build_conf "$hosts" "mapreduce.cluster.local.dir" "$dirs" "mapred-site.private.xml"
+    build_conf "$hosts" "mapreduce.task.io.sort.factor" "10" "mapred-site.xml"
+
 
 }
 
 
 #platform 31-34 home 
+easy_build 30 34
 
