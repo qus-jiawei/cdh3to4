@@ -9,6 +9,9 @@ var_die HIVE_MYSQL_USER
 var_die HIVE_MYSQL_PASSWD
 var_die HIVE_MYSQL_DATABASE
 
+if [ "$HIVE_MYSQL" == "false" ];then
+    echo "HIVE_MYSQL is false die!"
+fi;
 
 UP_7_8=$UP_DATA/hive_metastore/upgrade-0.7.0-to-0.8.0.mysql.sql
 UP_8_9=$UP_DATA/hive_metastore/upgrade-0.8.0-to-0.9.0.mysql.sql
@@ -22,10 +25,6 @@ run_sql(){
     echo "source $1" | mysql -h"${HIVE_MYSQL_HOST}" -P"${HIVE_MYSQL_PORT}" -u"${HIVE_MYSQL_USER}" -p"${HIVE_MYSQL_PASSWD}" -D"${HIVE_MYSQL_DATABASE}"
     echo "finish"
 }
-
-#是否加入数据库备份???????????
-#
-#
 
 echo "connect to hive mysql and run sql"
 #sql中使用了相对目录，所以需要跳进目录中

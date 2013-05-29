@@ -78,11 +78,12 @@ PORT_PREFIX=57
 
 #如果为空，将会尝试从hive-site.xml中获得,使用匹配方式获取，不保证一定获取正确
 #推荐手动指定
-HIVE_MYSQL_HOST="xxxhost"
-HIVE_MYSQL_PORT="58306"
-HIVE_MYSQL_USER="xxxhive"
-HIVE_MYSQL_PASSWD="xxxhive"
-HIVE_MYSQL_DATABASE="xxxqiujw_hive_metastore"
+HIVE_MYSQL="false"
+#HIVE_MYSQL_HOST="xxxhost"
+#HIVE_MYSQL_PORT="58306"
+#HIVE_MYSQL_USER="xxxhive"
+#HIVE_MYSQL_PASSWD="xxxhive"
+#HIVE_MYSQL_DATABASE="xxxqiujw_hive_metastore"
 
 
 #name dir用于打包成tar包备份，会将这个目录发送到HA的namenode上启动
