@@ -10,8 +10,6 @@ platform34
 #默认第1,2台
 HIVE_NODES="
 platform30
-platform31
-platform32
 "
 #默认前5台
 ZK_NODES="
