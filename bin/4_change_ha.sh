@@ -67,8 +67,10 @@ journlnode
 echo "give you 10 second to check journlnode"
 sleep 10
 
-
 rsync_namenode
+echo "give you 10 second to check other node's name dir"
+sleep 10
+
 
 
 echo "format zk"
