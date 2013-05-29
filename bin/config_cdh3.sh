@@ -20,8 +20,9 @@ do
 myscp "$CONF/hive/*" "$node:${CDH3_HIVE_DIR}/conf"
 done
 
-
+cp $CONF/zk/zoo.cfg /tmp/zoo.cfg
+sed -i "s/qiujw/$USER_NAME/" /tmp/zoo.cfg
 for node in $ZK_NODES
 do
-myscp  "$CONF/zk/zoo.cfg" "$node:${CDH3_ZK_DIR}/conf"
+myscp  "/tmp/zoo.cfg" "$node:${CDH3_ZK_DIR}/conf"
 done
