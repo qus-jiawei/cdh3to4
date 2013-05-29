@@ -75,8 +75,8 @@ while [ "$SAFEMODE" != "off" ];
 do
     result=`hadoop dfsadmin -safemode get|grep OFF`
     if [ -z "$result" ];then 
-        echo "safemode is on and sleep 1";
-        sleep 1;
+        echo "safemode is on and sleep 10";
+        sleep 10;
     else
         echo "safemode is off";
         SAFEMODE="off";
