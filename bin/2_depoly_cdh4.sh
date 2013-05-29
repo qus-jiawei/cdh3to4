@@ -17,8 +17,9 @@ echo "连接软连接，分发环境配置"
 for node in $NODES
 do
     ssh -p $SSH_PORT $node "
-        ln -s ~/$CDH4_HADOOP_DIR ~/hadoop;
-        ln -s ~/$CDH4_HBASE_DIR ~/hbase;
+        cd ~/;
+        ln -s $CDH4_HADOOP_DIR hadoop;
+        ln -s $CDH4_HBASE_DIR hbase;
         cd ~/java;
         ln -s $JDK_1_7_DIR jdk;
     "
@@ -31,13 +32,15 @@ done
 for node in $HIVE_NODES
 do
     ssh -p $SSH_PORT $node "
-        ln -s ~/$CDH4_HIVE_DIR ~/hive;
+        cd ~/;
+        ln -s $CDH4_HIVE_DIR hive;
     "
 done
 for node in $ZK_NODES
 do
     ssh -p $SSH_PORT $node "
-        ln -s ~/$CDH4_ZK_DIR ~/zookeeper;
+        cd ~/;
+        ln -s $CDH4_ZK_DIR zookeeper;
     "
     
 done

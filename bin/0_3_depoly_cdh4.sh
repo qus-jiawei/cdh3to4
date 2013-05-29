@@ -47,7 +47,7 @@ send_tar "$NODES" "$UP_DATA/jdk/$JDK_1_7_TAR"  "~/java/$JDK_1_7_TAR" "~/java/$JD
 
 send_tar "$NODES" "$CDH4_DIR/$CDH4_HADOOP_JAR"  "~/$CDH4_HADOOP_JAR" "~/$CDH4_HADOOP_DIR"
 send_tar "$NODES" "$CDH4_DIR/$CDH4_HBASE_JAR"  "~/$CDH4_HBASE_JAR" "~/$CDH4_HBASE_DIR"
-send_tar "$NODES" "$CDH4_DIR/$CDH4_HBASE_JAR"  "~/$CDH4_HBASE_JAR" "~/java/$CDH4_HBASE_DIR"
+send_tar "$HIVE_NODES" "$CDH4_DIR/$CDH4_HIVE_JAR"  "~/$CDH4_HIVE_JAR" "~/$CDH4_HIVE_DIR"
 send_tar "$ZK_NODES" "$CDH4_DIR/$CDH4_ZK_JAR"  "~/$CDH4_ZK_JAR" "~/$CDH4_ZK_DIR"
 #创建需要的目录
 echo "创建目录"
