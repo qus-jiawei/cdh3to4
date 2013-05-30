@@ -33,6 +33,7 @@ if [ "$HADOOP_ENv_DEFINE" != "true" ];then
 
 HADOOP_ENv_DEFINE="true"
 
+HADOOP_SSH_OPTS="-p 9922"
 
 # The java implementation to use.
 export JAVA_HOME=${JAVA_HOME}

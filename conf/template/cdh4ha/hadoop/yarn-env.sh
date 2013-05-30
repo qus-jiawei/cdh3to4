@@ -21,6 +21,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/pkg/lzo/lib
 if [ "$YARN_ENV_DEFINE" != "true" ];then
 
 YARN_ENV_DEFINE="true"
+HADOOP_SSH_OPTS="-p 9922"
 
 # User for YARN daemons
 export HADOOP_YARN_USER=${HADOOP_YARN_USER:-yarn}
