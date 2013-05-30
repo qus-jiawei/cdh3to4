@@ -29,9 +29,9 @@ shopt -s expand_aliases;
 export JAVA_HOME=$HOME/java/jdk
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/pkg/lzo/lib
 
-if [ "$HADOOP_END_DEFINE" != "true" ];then
+if [ "$HADOOP_ENv_DEFINE" != "true" ];then
 
-HADOOP_END_DEFINE="true"
+HADOOP_ENv_DEFINE="true"
 
 
 # The java implementation to use.
