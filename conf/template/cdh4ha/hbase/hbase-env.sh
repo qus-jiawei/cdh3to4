@@ -20,9 +20,11 @@
 # */
 
 # Set environment variables here.
+
+. $HOME/.bash_profile;
+
 # use HBASE_SSH_OPTS instead
 #shopt -s expand_aliases;
-#. $HOME/.bash_profile;
 #alias ssh='ssh -p 9922'
 
 # The java implementation to use.  Java 1.6 required.
