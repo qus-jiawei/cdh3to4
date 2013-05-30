@@ -5,7 +5,7 @@
 
   <property>
     <name>javax.jdo.option.ConnectionURL</name>
-    <value>jdbc:mysql://platform30:58306/qiujw_hive_metastore?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf8</value>
+    <value>HIVE_JDBC_MYSQL</value>
   </property>
   
   <property>

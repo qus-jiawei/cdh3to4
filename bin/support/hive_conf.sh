@@ -25,9 +25,9 @@ xml_format $HIVE
 PP="${PORT_PREFIX}";
 
 #####有sed重复替换的bug
-temp="jdbc:mysql://$HIVE_MYSQL_HOST:$HIVE_MYSQL_PORT/$HIVE_MYSQL_DATABASE?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf8"
-#xml_set $HIVE "javax.jdo.option.ConnectionURL" $temp
-sed 's/HIVE_JDBC_MYSQL/$temp/' -i $HIVE
+temp="jdbc:mysql://$HIVE_MYSQL_HOST:$HIVE_MYSQL_PORT/$HIVE_MYSQL_DATABASE?"
+temp=$temp'createDatabaseIfNotExist=true\&amp;useUnicode=true\&amp;characterEncoding=utf8'
+sed -r "s#HIVE_JDBC_MYSQL#$temp#" -i $HIVE
 ################
 
 xml_set $HIVE "javax.jdo.option.ConnectionUserName" "$HIVE_MYSQL_USER"
