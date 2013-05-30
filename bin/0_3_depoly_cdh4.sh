@@ -51,7 +51,7 @@ send_tar "$HIVE_NODES" "$CDH4_DIR/$CDH4_HIVE_JAR"  "~/$CDH4_HIVE_JAR" "~/$CDH4_H
 send_tar "$ZK_NODES" "$CDH4_DIR/$CDH4_ZK_JAR"  "~/$CDH4_ZK_JAR" "~/$CDH4_ZK_DIR"
 #创建需要的目录
 echo "创建目录"
-echo "~/yarm_nm ~/hadoop_journal/edits"
+echo "~/yarn_nm ~/hadoop_journal/edits"
 for node in $NODES
 do
     ssh -p ${SSH_PORT} $node "mkdir -p ~/yarm_nm ~/hadoop_journal/edits "
