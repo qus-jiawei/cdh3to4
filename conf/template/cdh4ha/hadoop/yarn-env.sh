@@ -13,6 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+shopt -s expand_aliases;
+. $HOME/.bash_profile
+export JAVA_HOME=$HOME/java/jdk
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/pkg/lzo/lib
+
+if [ "$YARN_ENV_DEFINE" != "true" ];then
+
+YARN_ENV_DEFINE="true"
+
 # User for YARN daemons
 export HADOOP_YARN_USER=${HADOOP_YARN_USER:-yarn}
 
@@ -61,6 +70,8 @@ fi
 # restore ordinary behaviour
 unset IFS
 
+YARN_RESOURCEMANAGER_HEAPSIZE=2048
+YARN_NODEMANAGER_HEAPSIZE=1024
 
 YARN_OPTS="$YARN_OPTS -Dhadoop.log.dir=$YARN_LOG_DIR"
 YARN_OPTS="$YARN_OPTS -Dyarn.log.dir=$YARN_LOG_DIR"
@@ -75,4 +86,5 @@ if [ "x$JAVA_LIBRARY_PATH" != "x" ]; then
 fi  
 YARN_OPTS="$YARN_OPTS -Dyarn.policy.file=$YARN_POLICYFILE"
 
-
+#end of onc include
+fi;

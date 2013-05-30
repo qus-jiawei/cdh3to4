@@ -14,6 +14,7 @@ export JAVA_HOME=$HOME/java/jdk
 export CLASSPATH=.:$JAVA_HOME/lib/tools.jar
 
 export HADOOP_HOME=$HOME/hadoop
+export HADOOP_PREFIX=$HADOOP_HOME
 export HADOOP_BIN=$HADOOP_HOME/bin
 export HADOOP_SBIN=$HADOOP_HOME/sbin
 export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
