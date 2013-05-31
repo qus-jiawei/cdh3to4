@@ -1,11 +1,11 @@
 # Set Hadoop-specific environment variables here.
+if [ "$HADOOP_ENv_DEFINE" != "true" ];then
+export HADOOP_ENv_DEFINE="true"
+
 shopt -s expand_aliases;
 . $HOME/.bash_profile
 export JAVA_HOME=$HOME/java/jdk
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/pkg/lzo/lib
-
-if [ "$HADOOP_ENv_DEFINE" != "true" ];then
-export HADOOP_ENv_DEFINE="true"
 
 
 #export JAVA_HOME=$HOME/java/jdk
