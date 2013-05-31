@@ -72,9 +72,9 @@ fi
 unset IFS
 
 #YARN_RESOURCEMANAGER_HEAPSIZE=2048
-YARN_RESOURCEMANAGER_OPTS="-Xss256k -Xmn256m -Xms2048m -Xmx2048m"
+export YARN_RESOURCEMANAGER_OPTS=" -Xss256k -Xmn256m -Xms2048m -Xmx2048m "
 #YARN_NODEMANAGER_HEAPSIZE=1024
-YARN_NODEMANAGER_OPTS="-Xss256k -Xmn256m -Xms1024m -Xmx1024m"
+export YARN_NODEMANAGER_OPTS=" -Xss256k -Xmn256m -Xms1024m -Xmx1024m "
 
 #UC_HADOOP_SERVER="-XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+UseCMSCompactAtFullCollection -XX:+CMSClassUnloadingEnabled"
 UC_HADOOP_SERVER="-XX:+DisableExplicitGC -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:InitiatingHeapOccupancyPercent=45"
