@@ -5,7 +5,7 @@ export JAVA_HOME=$HOME/java/jdk
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/pkg/lzo/lib
 
 if [ "$HADOOP_ENv_DEFINE" != "true" ];then
-HADOOP_ENv_DEFINE="true"
+export HADOOP_ENv_DEFINE="true"
 
 
 #export JAVA_HOME=$HOME/java/jdk
