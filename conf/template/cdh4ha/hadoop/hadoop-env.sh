@@ -29,6 +29,8 @@ done
 #export HADOOP_NAMENODE_INIT_HEAPSIZE=2048
 
 UC_HADOOP_MEM_NN="-Xss256k -Xmn256m -Xms5102m -Xmx5102m"
+#local debug
+#UC_HADOOP_MEM_NN="-Xss256k -Xmn256m -Xms1024m -Xmx1024m"
 UC_HADOOP_MEM_DN="-Xss256k -Xmn256m -Xms1024m -Xmx1024m"
 
 # Extra Java runtime options. Empty by default.
