@@ -63,6 +63,7 @@ build_zk_config(){
     cp ${UP_CONF_TEMP}/cdh4ha/zk/zoo.cfg $build_zk_file
 
     sed  "s#USER_HOME#${HOME}#g" -i $build_zk_file
+    sed  "s#PP#${PORT_PREFIX}#g" -i $build_zk_file
 
     peerport=` grep peerport $build_zk_file |awk -F '=' '{print $2}'`
     leaderport=` grep leaderport $build_zk_file|awk -F '=' '{print $2}'`
