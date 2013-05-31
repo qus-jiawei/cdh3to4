@@ -20,7 +20,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/pkg/lzo/lib
 
 if [ "$YARN_ENV_DEFINE" != "true" ];then
 
-YARN_ENV_DEFINE="true"
+export YARN_ENV_DEFINE="true"
 HADOOP_SSH_OPTS="-p 9922"
 
 # User for YARN daemons
@@ -71,10 +71,22 @@ fi
 # restore ordinary behaviour
 unset IFS
 
-YARN_RESOURCEMANAGER_HEAPSIZE=2048
-#YARN_RESOURCEMANAGER_OPTS
-YARN_NODEMANAGER_HEAPSIZE=1024
-#YARN_NODEMANAGER_OPTS
+#YARN_RESOURCEMANAGER_HEAPSIZE=2048
+YARN_RESOURCEMANAGER_OPTS="-Xss256k -Xmn256m -Xms2048m -Xmx2048m"
+#YARN_NODEMANAGER_HEAPSIZE=1024
+YARN_NODEMANAGER_OPTS="-Xss256k -Xmn256m -Xms1024m -Xmx1024m"
+
+#UC_HADOOP_SERVER="-XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+UseCMSCompactAtFullCollection -XX:+CMSClassUnloadingEnabled"
+UC_HADOOP_SERVER="-XX:+DisableExplicitGC -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:InitiatingHeapOccupancyPercent=45"
+UC_HADOOP_SERVER+=" -Dclient.encoding.override=UTF-8 -Dfile.encoding=UTF-8 -Duser.language=zh -Duser.region=CN"
+
+if [ "$YARN_OPTS" == "" ]; then 
+  YARN_OPTS="-server $UC_HADOOP_SERVER";
+else 
+  YARN_OPTS+=" -server $UC_HADOOP_SERVER";
+fi
+export YARN_OPTS;
+
 
 YARN_OPTS="$YARN_OPTS -Dhadoop.log.dir=$YARN_LOG_DIR"
 YARN_OPTS="$YARN_OPTS -Dyarn.log.dir=$YARN_LOG_DIR"

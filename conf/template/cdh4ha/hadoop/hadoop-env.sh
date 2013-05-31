@@ -34,8 +34,10 @@ UC_HADOOP_MEM_DN="-Xss256k -Xmn256m -Xms1024m -Xmx1024m"
 # Extra Java runtime options. Empty by default.
 export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true $HADOOP_CLIENT_OPTS"
 
-UC_HADOOP_SERVER="-XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+UseCMSCompactAtFullCollection -XX:+CMSClassUnloadingEnabled"
+#UC_HADOOP_SERVER="-XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+UseCMSCompactAtFullCollection -XX:+CMSClassUnloadingEnabled"
+UC_HADOOP_SERVER="-XX:+DisableExplicitGC -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:InitiatingHeapOccupancyPercent=45"
 UC_HADOOP_SERVER+=" -Dclient.encoding.override=UTF-8 -Dfile.encoding=UTF-8 -Duser.language=zh -Duser.region=CN"
+
 if [ "$HADOOP_OPTS" == "" ]; then 
   HADOOP_OPTS="-server $UC_HADOOP_SERVER";
 else 
@@ -44,8 +46,8 @@ fi
 export HADOOP_OPTS;
 
 # Command specific options appended to HADOOP_OPTS when specified
-export HADOOP_NAMENODE_OPTS="$UC_HADOOP_MEM_NN -Dhadoop.security.logger=${HADOOP_SECURITY_LOGGER:-INFO,RFAS} -Dhdfs.audit.logger=${HDFS_AUDIT_LOGGER:-INFO,NullAppender} $HADOOP_NAMENODE_OPTS"
-export HADOOP_DATANODE_OPTS="$UC_HADOOP_MEM_DN -Dhadoop.security.logger=ERROR,RFAS $HADOOP_DATANODE_OPTS"
+export HADOOP_NAMENODE_OPTS="$UC_HADOOP_MEM_NN $UC_HADOOP_SERVER -Dhadoop.security.logger=${HADOOP_SECURITY_LOGGER:-INFO,RFAS} -Dhdfs.audit.logger=${HDFS_AUDIT_LOGGER:-INFO,NullAppender} $HADOOP_NAMENODE_OPTS"
+export HADOOP_DATANODE_OPTS="$UC_HADOOP_MEM_DN $UC_HADOOP_SERVER -Dhadoop.security.logger=ERROR,RFAS $HADOOP_DATANODE_OPTS"
 
 # The ZKFC does not need a large heap, and keeping it small avoids
 # any potential for long GC pauses
