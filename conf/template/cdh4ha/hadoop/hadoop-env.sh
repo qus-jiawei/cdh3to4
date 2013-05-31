@@ -28,8 +28,8 @@ done
 #export HADOOP_HEAPSIZE=1024
 #export HADOOP_NAMENODE_INIT_HEAPSIZE=2048
 
-UC_HADOOP_MEM_NN="-Xss128k -Xmn256m -Xms5102m -Xmx5102m"
-UC_HADOOP_MEM_DN="-Xss128k -Xmn256m -Xms1024m -Xmx1024m"
+UC_HADOOP_MEM_NN="-Xss256k -Xmn256m -Xms5102m -Xmx5102m"
+UC_HADOOP_MEM_DN="-Xss256k -Xmn256m -Xms1024m -Xmx1024m"
 
 # Extra Java runtime options. Empty by default.
 export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true $HADOOP_CLIENT_OPTS"
