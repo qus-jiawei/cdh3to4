@@ -40,7 +40,10 @@ export HBASE_HEAPSIZE=1000
 # Below are what we set by default.  May only work with SUN JVM.
 # For more on why as well as other possible settings,
 # see http://wiki.apache.org/hadoop/PerformanceTuning
-export HBASE_OPTS="-ea -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode"
+UC_HADOOP_SERVER="-XX:+DisableExplicitGC -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:InitiatingHeapOccupancyPercent=45"
+UC_HADOOP_SERVER+=" -Dclient.encoding.override=UTF-8 -Dfile.encoding=UTF-8 -Duser.language=zh -Duser.region=CN"
+
+export HBASE_OPTS=" -server $UC_HADOOP_SERVER "
 
 # Uncomment below to enable java garbage collection logging in the .out file.
 # export HBASE_OPTS="$HBASE_OPTS -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps" 
