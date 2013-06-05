@@ -54,7 +54,7 @@ echo "创建目录"
 echo "~/yarn_nm ~/hadoop_journal/edits"
 for node in $NODES
 do
-    ssh -p ${SSH_PORT} $node "mkdir -p ~/yarm_nm ~/hadoop_journal/edits "
+    ssh -p ${SSH_PORT} $node "mkdir -p ~/yarn_nm ~/hadoop_journal/edits "
 done
 
 echo "~/$CDH4_ZK_DIR/data ~/$CDH4_ZK_DIR/datalogs"

@@ -63,6 +63,8 @@ PORT_PREFIX=57
 
 #如果为空，将会尝试从hive-site.xml中获得,使用匹配方式获取，不保证一定获取正确
 #推荐手动指定
+#如果要跳过HIVE的mysql的升级可以把下面的注释去掉
+#HIVE_MYSQL="false"
 HIVE_MYSQL_HOST="platform30"
 HIVE_MYSQL_PORT="58306"
 HIVE_MYSQL_USER="hive"
