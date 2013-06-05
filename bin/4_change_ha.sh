@@ -77,16 +77,20 @@ echo "format zk"
 formatZK
 sleep 5
 
-echo "begin to start"
+echo "begin to start dfs"
 start-dfs.sh
+echo "wait for 20 and continue"
+sleep 20
 #TODO check
 sh $UP_BIN/start_close_check.sh dfs start
 wait_for_safemode
 sh $UP_BIN/hdfs_check.sh
-
+echo "begin to start yarn and historyserver"
 start-yarn.sh
 #sh $UP_BIN/start_close_check.sh yarn start
 sh mr-jobhistory-daemon.sh start historyserver
+echo "wait for 20 and continue"
+sleep 20
 #TODO check
 sh $UP_BIN/mr_check.sh
 
