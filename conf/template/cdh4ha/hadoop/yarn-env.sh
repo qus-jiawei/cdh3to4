@@ -15,11 +15,6 @@
 
 if [ "$YARN_ENV_DEFINE" != "true" ];then
 
-shopt -s expand_aliases;
-. $HOME/.bash_profile
-export JAVA_HOME=$HOME/java/jdk
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/pkg/lzo/lib
-
 export YARN_ENV_DEFINE="true"
 HADOOP_SSH_OPTS="-p 9922"
 
